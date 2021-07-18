@@ -56,19 +56,29 @@ public class BookingService {
     	
     	
     	 // see whether vaccines are available in the slot, whether slot is filled or have some vaccines
-    	isVaccineAvaliableForCurrentSlot(slot);
+    	if(!isVaccineAvaliableForCurrentSlot(slot)) {
+    		
+    	}
     	
     	 // - whether user is already vaccinated
-    	isVaccinated(user);
+    	if(isVaccinated(user)) {
+    		
+    	}
     	
     	  // - PENDING appointment
-    	hasPendingAppointments(user);
+    	if(hasPendingAppointments(user)) {
+    		
+    	}
     	
     	 // - check for previous vaccine and book the same one
-    	isCurrentBookingVaccineSameAsPrevious(user, slot);
+    	if(!isCurrentBookingVaccineSameAsPrevious(user, slot)) {
+    		
+    	}
     	
     	// - check for minimum number of days
-    	checkForDaysDifferenceForSecondDose(user, slot);
+    	if(!hasDaysDifferenceForSecondDose(user, slot)) {
+    		
+    	}
     	
     	return  bookingRepository.save(Booking.builder()  //referenceId ?
     							 .user(user)
@@ -130,7 +140,7 @@ public class BookingService {
     	return isSame;
     }
     
-    private boolean checkForDaysDifferenceForSecondDose(User user, Slot slot) {
+    private boolean hasDaysDifferenceForSecondDose(User user, Slot slot) {
     	
     	List<Booking> listOfBookings = user.getBookings().stream()
     					  								 .filter(b -> b.getCompletionStatus().equals(CompletionStatus.COMPLETED))
