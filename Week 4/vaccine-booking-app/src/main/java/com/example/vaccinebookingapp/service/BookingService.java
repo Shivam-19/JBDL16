@@ -32,7 +32,7 @@ public class BookingService {
         // user and slot exist
         // slot with given id is old
         // age limit
-        // check for previous appointments ??
+        // check for previous appointments 
         // - whether user is already vaccinated
         // - PENDING appointment
         // - check for previous vaccine and book the same one
@@ -69,18 +69,6 @@ public class BookingService {
     	
     	// - check for minimum number of days
     	checkForDaysDifferenceForSecondDose(user, slot);
-    	
-    	
-    	/*
-    	 * slotRepository.save(Slot.builder()
-                    .location(locationRepository.getById(1))
-                    .vaccine(Vaccine.COVISHIELD)
-                    .ageLimit(AgeLimit.AGE0toAbove)
-                    .count(40)
-                    .date(Date.valueOf("2021-07-17"))
-                    .build()
-            );
-    	 * */
     	
     	return  bookingRepository.save(Booking.builder()  //referenceId ?
     							 .user(user)
